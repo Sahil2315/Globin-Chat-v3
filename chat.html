@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div id="graddiv">
+        <div id="conic"></div>
+    </div>
+    <div id="blurrify"></div>
+    <div id="headline">
+        <div id="logo">
+            <svg style="opacity: 80%;" width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.5953 31.892C20.6076 31.892 26.2922 26.2074 26.2922 19.1951C26.2922 12.1828 20.6076 6.49818 13.5953 6.49818C6.58297 6.49818 0.898367 12.1828 0.898367 19.1951C0.898367 26.2074 6.58297 31.892 13.5953 31.892Z" stroke="#00FFD1" stroke-width="1.79673"/>
+                <path d="M6.94958 8.65426V29.8557" stroke="#00FFD1" stroke-width="1.79673"/>
+                <path d="M13.3557 6.79764V31.892" stroke="#00FFD1" stroke-width="1.79673"/>
+                <path d="M20.3031 8.11746V29.8557" stroke="#00FFD1" stroke-width="1.79673"/>
+                <path d="M4.31021 10.3312L22.9364 10.2707" stroke="#00FFD1" stroke-width="1.19782"/>
+                <path d="M0.419237 19.0753H25.4537" stroke="#00FFD1" stroke-width="1.19782"/>
+                <path d="M4.31023 27.8194L22.9364 27.7595" stroke="#00FFD1" stroke-width="1.19782"/>
+                <path d="M12.7203 19.8515C12.1822 19.6693 12.1765 18.9103 12.7118 18.72L32.0603 11.8401C32.4484 11.7021 32.8567 11.9879 32.8598 12.3999L32.9614 25.8668C32.9645 26.2787 32.5606 26.5708 32.1704 26.4386L12.7203 19.8515Z" fill="#00FFD1"/>
+            </svg>    
+            Globin Chat
+        </div>
+    </div>
+    <div id="msg">
+        <div id="messager">
+            <input type="text" name="Search" id="srchmsgr" placeholder="Search Here">
+            <div id="srchresult">
+            </div>
+        </div>
+        <div id="msgarea1">
+            <svg id="meteors" width="382" height="369" viewBox="0 0 282 269" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M247.701 264.773L104.98 161.042M278.402 211.309L3.81773 4.35766M158.117 165.306L51.8345 81.6069M255.474 142.838L154.806 72.9272" stroke="url(#paint0_linear_1_2)" stroke-width="7" stroke-linecap="round"/>
+                <defs>
+                <linearGradient id="paint0_linear_1_2" x1="-23.475" y1="60.8544" x2="320.453" y2="275.267" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#8376FF" stop-opacity="0.21"/>
+                <stop offset="1" stop-color="#00FF84"/>
+                </linearGradient>
+                </defs>
+            </svg>
+            <svg id="diamond" width="587" height="379" viewBox="0 0 587 379" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="587" height="379" fill="url(#paint0_diamond_1_20)"/>
+                <defs>
+                <radialGradient id="paint0_diamond_1_20" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(293.5 189.5) rotate(90) scale(189.5 293.5)">
+                <stop stop-color="#00FFD1" stop-opacity="0.44"/>
+                <stop offset="1" stop-color="#5200FF" stop-opacity="0"/>
+                </radialGradient>
+                </defs>
+            </svg>
+            <div id="msgarea">
+            </div>           
+        </div>
+        <div>
+            <input type="text" id="msgtext" placeholder="Enter Your Message here">
+            <button id="sender">
+                <svg width="20" height="20" viewBox="0 0 52 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.35052 2.89788L46.3268 28.0425L2 54" stroke="white" stroke-width="5"/>
+                </svg>                    
+            </button>
+        </div>
+        <div id="chatinfo">
+            
+            <div id="info2">
+            </div>
+        </div>
+    </div>
+    <div id="chatsouter">
+        <div id="chatfiller"></div>
+        <div style="position: relative; z-index: 3; font-size: 28px; font-weight: 600; color: white; padding: 40px ;">
+            Your Chats:
+        </div>
+        <div id="chats">
+        </div>
+        <div id="info-div">
+            <div id="info1">
+                <div id="imagediv">
+                    <img id="profilePicture1" src="Group 3.png"/>
+                    <div id="changePhoto">
+                        <input type="file" name="Profile Picture" id="imgupload">
+                        <svg onclick = "tfinput()" id="uploader" style="margin-right: 20px;" class="changer" width="100%" height="100%" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect class="rectinner" width="250" height="250" fill="#00FF94"/>
+                            <path d="M115 204C115 209.523 119.477 214 125 214C130.523 214 135 209.523 135 204L115 204ZM132.071 39.9289C128.166 36.0237 121.834 36.0237 117.929 39.9289L54.2893 103.569C50.3841 107.474 50.3841 113.805 54.2893 117.711C58.1946 121.616 64.5262 121.616 68.4315 117.711L125 61.1421L181.569 117.711C185.474 121.616 191.805 121.616 195.711 117.711C199.616 113.805 199.616 107.474 195.711 103.569L132.071 39.9289ZM135 204L135 47L115 47L115 204L135 204Z" fill="#5549DF"/>
+                        </svg>   
+                        <svg onclick="deletePhoto()" id="deleter" class="changer" width="100%" height="100%" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect class="rectinner" width="250" height="250" fill="#FF3D00"/>
+                            <path d="M51 53L198.069 197.199" stroke="#E066FF" stroke-width="20" stroke-linecap="round"/>
+                            <path d="M198.069 53.1755L51.1695 197.208" stroke="#E066FF" stroke-width="20" stroke-linecap="round"/>
+                        </svg>    
+                    </div>
+                </div>
+            </div>
+            <div id="info3">
+        
+            </div>
+        </div>
+        
+    </div> 
+</body>
+<script src="chat.js"></script>
+</html>

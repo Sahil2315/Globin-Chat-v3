@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" name="File" id="file">
+    <button id="filesender">Send</button>
+</body>
+<script>
+    let sender = document.getElementById('filesender')
+    let file = document.getElementById('file')
+    sender.addEventListener('click', async() => {
+        let sendable = file.files[0]
+        const formData = new FormData();
+        formData.append('image', sendable);
+        fetch('/upload', {
+            method: 'POST',
+            body: formData,
+        })
+            .then(response => response.json())
+            .then(data => {
+            console.log('File uploaded successfully:', data);
+            // Handle the server response as needed
+            })
+            .catch(error => {
+            console.error('File upload failed:', error);
+            // Handle any errors that occur during the upload
+            });
+    })
+</script>
+</html>
