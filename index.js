@@ -95,24 +95,32 @@ app.get('/signupPage', (req, res) => {
 })
 
 app.post('/signupFunction', (req, res) => {
-  db.query(`insert into login (uname, email, password, profilepic) values('${req.body.uname}', '${req.body.email}', '${req.body.password}', 'nopic');`, (err, result) => {
-    if(err){ res.send({'signup': 'failed'}); throw err}
-    db.query(`select uid from login where uname = '${req.body.uname}' and email = '${req.body.email}'`, (er, rslt) => {
-      if(er) throw er
-      db.query(`insert into messages (content, sendid, sendname, recid, recname, timing)
-        values('Welcome to Globin Chat! Start Chatting By Searching for you Friend''s Username', 0, 'Chat-Bot', ${rslt.rows[0].uid}, '${req.body.uname}', now());
-      `, (errr, fresult) => {
-        if(errr) throw errr
-        res.send({'signup': 'successful'})
+  db.query(`select * from login where email = '${req.body.email}'`, (error, rets) => {
+    if (error) throw error
+    if(rets.rowCount >0 ){
+      res.send({'signup': 'usedEmail'})
+    }
+    else{
+      db.query(`insert into login (uname, email, password, profilepic) values('${req.body.uname}', '${req.body.email}', '${req.body.password}', 'nopic');`, (err, result) => {
+        if(err){ res.send({'signup': 'failed'}); throw err}
+        db.query(`select uid from login where uname = '${req.body.uname}' and email = '${req.body.email}'`, (er, rslt) => {
+          if(er) throw er
+          db.query(`insert into messages (content, sendid, sendname, recid, recname, timing)
+            values('Welcome to Globin Chat! Start Chatting By Searching for you Friend''s Username', 0, 'Chat-Bot', ${rslt.rows[0].uid}, '${req.body.uname}', now());
+          `, (errr, fresult) => {
+            if(errr) throw errr
+            res.send({'signup': 'successful'})
+          })
+        })
       })
-    })
+    }
   })
 })
 
 app.post('/loginreq', (req, res) => {
-  db.query(`select * from login where uname = '${req.body.entry}' and password = '${req.body.password}'`, (err, result) => {
+  db.query(`select * from login where (uname = '${req.body.entry}' or email = '${req.body.entry}') and password = '${req.body.password}'`, (err, result) => {
     if (err) throw err
-    if (result.rows.length == 1) {
+    if (result.rowCount > 0) {
       res.cookie('id', result.rows[0])
       res.send({ 'login': 'successful', 'user': { 'userid': result.rows[0].uid, 'name': result.rows[0].uname } })
     }
@@ -214,7 +222,7 @@ app.post('/changeAbout', (req, res) => {
   db.query(`update login set aboutme = '${req.body.entry}' where uid = ${req.cookies.id.uid}`, (err, result) => {
     if(err){
       res.send({'changed': 'failure'})
-      throw error
+      throw err
     }
     res.send({'changed': 'success'})
   })

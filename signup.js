@@ -33,6 +33,13 @@ let SignupFunction = async () => {
                         window.location.href = window.location.origin + '/'
                     }
                 }
+                else if(data.signup == 'usedEmail'){
+                    alert("Email Already in Use!\nPlease Login Instead using your Credentials")
+                    uname.value = ""
+                    email.value = ""
+                    passc.value = ""
+                    passw.value = ""
+                }
             })
         }
         else{
