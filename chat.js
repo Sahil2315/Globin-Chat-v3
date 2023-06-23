@@ -534,11 +534,11 @@ if(mediaQuery.matches){
     })
     document.addEventListener('touchend', e => {
         endpoint = e.changedTouches[0].screenX
-        if(endpoint > startpoint+30 && opened == false){
+        if(endpoint > startpoint+100 && opened == false){
             chatsouter.style.transform = 'translateX(0px)'
             opened = true
         }
-        if(startpoint > endpoint+10 && opened == true){
+        if(startpoint > endpoint+100 && opened == true){
             chatsouter.style.transform = 'translateX(-300px)'
             opened = false
         }
