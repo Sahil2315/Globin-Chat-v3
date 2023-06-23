@@ -193,7 +193,7 @@ body{
 }
 
 #info3{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     backdrop-filter: blur(20px);
@@ -415,10 +415,6 @@ body{
     margin-bottom: 25px;
     color: white;
     border-radius: 3px;
-}
-
-#bsignup{
-
 }
 
 .heading1{
