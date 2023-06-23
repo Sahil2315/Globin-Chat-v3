@@ -54,7 +54,7 @@ body{
 #msgarea1{
     margin-top: 100px;
     height: 90%;
-    width: calc(98% - 220px);
+    width: 98%;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -435,7 +435,7 @@ body{
     position: absolute;
     right: 0;
     top: 0;
-    width: 220px;
+    width: 0px;
     background-color: rgba(0, 255, 255, 0.315);
     height: 100%;
     display: none;
