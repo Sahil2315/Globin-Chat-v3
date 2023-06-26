@@ -1,8 +1,9 @@
 let express = require('express')
 let app = express()
 let path = require('path')
+require('dotenv').config();
 const { Pool, Client } = require('pg')
-const connectionString = 'postgres://nmtakhdb:Tc028bPc4Sjcqywbd5zh7YP2bCqJ4twQ@satao.db.elephantsql.com/nmtakhdb'
+const connectionString = process.env.Postgres_Con_String
 const cookieParser = require('cookie-parser')
 const server = require("http").Server(app);
 const io = require("socket.io")(server);
@@ -22,14 +23,13 @@ const sharp = require('sharp')
 const firebase = require('firebase/app');
 const {getStorage, ref, getDownloadURL, uploadBytesResumable} = require('firebase/storage');
 const firebaseConfig = {
-  apiKey: "AIzaSyBYK-kbLHPPBODxUjlSHY8N27iVXmZg07c",
-  authDomain: "chatapp-6f2d9.firebaseapp.com",
-  databaseURL: "https://chatapp-6f2d9-default-rtdb.asia-southeast1.firebasedatabase.app",
+  apiKey: process.env.fbase_API_KEY,
+  authDomain: process.env.fbase_Auth_Domain,
   projectId: "chatapp-6f2d9",
-  storageBucket: "chatapp-6f2d9.appspot.com",
-  messagingSenderId: "611520802721",
-  appId: "1:611520802721:web:dc081f04dde01f37c8a5e0",
-  measurementId: "G-6ZR35G51ER"
+  storageBucket: process.env.fbase_Storage_Bucket,
+  messagingSenderId: process.env.fbase_Messaging_Sender,
+  appId: process.env.fbase_APPID,
+  measurementId: process.env.fbase_MeasureID
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

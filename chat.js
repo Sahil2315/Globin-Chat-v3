@@ -386,6 +386,7 @@ let divselecter = async (centity) => {
     }
     if(mediaQuery.matches){
         chatsouter.style.transform = 'translateX(-300px)'
+        infodiv.style.display = 'none'
         opened = false
     }
     if(currentchat == null){

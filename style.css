@@ -134,12 +134,11 @@ body{
 }
 
 #selfinfodiv{
-    background-color: rgba(0, 153, 255, 0.3);
-    position: absolute;
+    background-color: rgba(28, 96, 141, 0.44);
+    position: relative;
     bottom: 0;
     left: 0;
-    z-index: 4;
-    backdrop-filter: blur(20px);
+    z-index: 6;
     width: 310px;
     padding: 15px 10px 15px 30px;
     font-size: 18px;
@@ -199,12 +198,12 @@ body{
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 6;
+    z-index: 4;
 }
 .notif span{
     color: white;
     position: absolute;
-    z-index: 7;
+    z-index: 5;
     left: 7px;
     top: 0;
 }
@@ -214,7 +213,7 @@ body{
     bottom: 0;
     left: 0;
     width: 350px;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
     z-index: 8;
 }
 
@@ -471,7 +470,7 @@ body{
 }
 
 .profileInfo{
-    color: rgb(122, 170, 209);
+    color: rgb(53 160 255);
     font-size: 18px;
     padding-left: 30px;
 }
@@ -600,6 +599,9 @@ body{
 /* responsiveness */
 
 @media screen and (max-width: 1100px){
+    #info1{
+        bottom: 68px;
+    }
     #chatshead{
         font-size: 25px;
         padding: 20px 40px;
@@ -650,6 +652,9 @@ body{
 }
 
 @media screen and (max-height: 850px){
+    #info1{
+        bottom: 68px;
+    }
     #chatshead{
         font-size: 25px;
         padding: 20px 40px;
