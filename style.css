@@ -133,11 +133,20 @@ body{
     padding: 10px;
 }
 
-.selfinfodiv{
-    backdrop-filter: blur(20px);
-    background-color: rgba(0, 153, 255, 0.1);
-    position: fixed;
+#selfinfodiv{
+    background-color: rgba(0, 153, 255, 0.3);
+    position: absolute;
     bottom: 0;
+    left: 0;
+    z-index: 4;
+    backdrop-filter: blur(20px);
+    width: 310px;
+    padding: 15px 10px 15px 30px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
 }
 
 .chatsdiv{
@@ -201,8 +210,9 @@ body{
 }
 
 #info3{
-    position: fixed;
+    position: absolute;
     bottom: 0;
+    left: 0;
     width: 350px;
     backdrop-filter: blur(20px);
     z-index: 8;
@@ -246,6 +256,7 @@ body{
 
 
 #chatsouter{
+    overflow-y: auto;
     z-index: 3;
     margin-top: 2px;
     padding: 0px;
@@ -253,8 +264,8 @@ body{
     left: 0;
     height: calc(100% - 68px);
     width: 350px;
+    backdrop-filter: blur(20px);
     background: linear-gradient(90deg, rgba(39,23,84,0.2) 0%, rgba(86,120,135,0.2) 74%, rgba(108,167,159,0.2) 87%, rgba(150,157,255,0.2) 100%);
-    overflow-y: auto;
 }
 
 #meteors{
@@ -305,7 +316,14 @@ body{
 }
 
 #chats{
-    margin-bottom: 80px;
+    margin-bottom: 75px;
+}
+#chatshead{
+    position: relative; 
+    z-index: 3; 
+    font-size: 28px; 
+    font-weight: 600; 
+    color: white; padding: 40px ;
 }
 
 
@@ -526,7 +544,7 @@ body{
 }
 
 #info1{
-    position: fixed;
+    position: absolute;
     bottom: 80px;
     padding: 20px 0;
     width: 350px;
@@ -582,13 +600,20 @@ body{
 /* responsiveness */
 
 @media screen and (max-width: 1100px){
-    #chatsouter, #info1, #info3{
+    #chatshead{
+        font-size: 25px;
+        padding: 20px 40px;
+    }
+    #chats{
+        margin-bottom: 65px;
+    }
+    #chatsouter, #info1{
         width: 300px;
     }
-    .chatsdiv, .selfinfodiv, #info3{
+    .chatsdiv, #selfinfodiv, #info3{
         width: 275px;
     }
-    .chatsdiv{
+    .chatsdiv, #selfinfodiv{
         font-size: 15px;
         padding: 12px 10px 12px 15px;
     }
@@ -625,11 +650,26 @@ body{
 }
 
 @media screen and (max-height: 850px){
-    #chatsouter{
+    #chatshead{
+        font-size: 25px;
+        padding: 20px 40px;
+    }
+    #chats{
+        margin-bottom: 65px;
+    }
+    #chatsouter, #info1{
         width: 300px;
     }
-    #chatsdiv{
-        width: 100%;
+    .chatsdiv, #selfinfodiv, #info3{
+        width: 275px;
+    }
+    .chatsdiv, #selfinfodiv{
+        font-size: 15px;
+        padding: 12px 10px 12px 15px;
+    }
+    .imageAndStatus{
+        width: 40px;
+        height: 44px;
     }
     #msg{
         left: 300px;
@@ -678,7 +718,6 @@ body{
 } 
 
 @media screen and (max-width: 650px) {
-    
     #innerdiv input, .labels, .heading1{
         width: 80%;
         margin-left: 5%;
@@ -687,6 +726,10 @@ body{
         z-index: 5;
         transform: translateX(-300px);
         transition-duration: 500ms;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    #info-div{
+        display: none;
     }
 
     #msg{

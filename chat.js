@@ -197,7 +197,7 @@ window.addEventListener('load', async () => {
     let profilejs = await userProfile.json()
     
     info3.insertAdjacentHTML('beforeend', `
-        <div class = "chatsdiv selfinfodiv"> 
+        <div id = "selfinfodiv"> 
         <div class="imageAndStatus">
             <div class="userpic ">
                 <img id="selfimg3" class="smolimg" src = "Group 3.png"/>
@@ -519,6 +519,7 @@ msgtext.addEventListener('keypress', (event) => {
 
 const mediaQuery = window.matchMedia('(max-width: 650px)')
 
+let infodiv = document.getElementById('info-div')
 let opened = false
 if(mediaQuery.matches){
     let chatsouter = document.getElementById('chatsouter')
@@ -536,10 +537,12 @@ if(mediaQuery.matches){
         endpoint = e.changedTouches[0].screenX
         if(endpoint > startpoint+100 && opened == false){
             chatsouter.style.transform = 'translateX(0px)'
+            infodiv.style.display = 'block'
             opened = true
         }
         if(startpoint > endpoint+100 && opened == true){
             chatsouter.style.transform = 'translateX(-300px)'
+            infodiv.style.display = 'none'
             opened = false
         }
     })
