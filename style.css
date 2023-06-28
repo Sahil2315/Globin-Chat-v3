@@ -723,6 +723,9 @@ body{
 } 
 
 @media screen and (max-width: 650px) {
+    body, html{
+        height: 100%;
+    }
     #innerdiv input, .labels, .heading1{
         width: 80%;
         margin-left: 5%;
