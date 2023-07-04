@@ -144,7 +144,7 @@ app.get('/getolder', (req, res) => {
   db.query(`select * from messages where 
     sendid = ${req.cookies.id.uid} or 
     recid = ${req.cookies.id.uid}
-    order by msgid desc limit 20;
+    order by msgid desc;
   `, (err, result) => {
     if (err) throw err
     res.send({ 'oldermsg': result.rows })

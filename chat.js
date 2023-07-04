@@ -378,11 +378,17 @@ let msgarea1 = document.getElementById('msgarea1')
 
 
 let divselecter = async (centity) => {
-    let media2 = window.matchMedia('(min-width: 900px)')
+    let media2 = window.matchMedia('(min-width: 1100px)')
+    const media3 = window.matchMedia('(min-width: 900px)')
     if(media2.matches){
         chatinfo.style.display = 'flex'
         chatinfo.style.width = '220px'
         msgarea1.style.width = 'calc(98% - 220px)'
+    }
+    else if(media3.matches){
+        chatinfo.style.display = 'flex'
+        chatinfo.style.width = '170px'
+        msgarea1.style.width = 'calc(98% - 170px)'
     }
     if(mediaQuery.matches){
         chatsouter.style.transform = 'translateX(-300px)'
@@ -548,3 +554,19 @@ if(mediaQuery.matches){
         }
     })
 }
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth < 900){
+        chatinfo.style.display = 'none'
+        msgarea1.style.width = '98%'   
+    }
+    else if(window.innerWidth > 900 && window.innerWidth < 1100){
+        chatinfo.style.display = 'flex'
+        chatinfo.style.width = '170px'
+        msgarea1.style.width = 'calc(98% - 170px)'
+    }
+    else{
+        chatinfo.style.width = '220px'
+        msgarea1.style.width = 'calc(98% - 220px)'
+    }
+})
