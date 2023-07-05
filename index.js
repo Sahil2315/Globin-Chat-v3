@@ -78,6 +78,9 @@ io.on("connection", (socket) => {
       if (err) throw err
     })
   })
+  socket.on("voice-call-req", user => {
+    console.log('voice call req received')
+  })
   socket.on('disconnect', () => {
     socket.broadcast.emit("userdis", sockettoid[socket.id].name)
     OnlineUsers.delete((sockettoid[socket.id]).userid)

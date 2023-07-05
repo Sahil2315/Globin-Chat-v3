@@ -596,7 +596,54 @@ body{
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+#calls{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+#VoiceCall, #VideoCall{
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    color: white;
+    background-color: rgba(137, 43, 226, 0.31);
+    display: flex;
+    font-size: 30px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}#VideoCall{
+    margin-left: 20px;
+}
+#VoiceCall:hover, #VideoCall:hover{
+    background-color: rgba(201, 175, 224, 0.31);
+}
+#callshow{
+    margin-top: 20px;
+    border-radius: 25px;
+    height: 90px;
+    width: 90px;
+    font-size: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: lime;
+    background-color: rgba(255, 228, 196, 0.2);
+    animation: fadeinout 1.8s ease-in-out 0s infinite;
+    display: none;
+}
 
+@keyframes fadeinout {
+    0%{
+        opacity: 0.2;
+    }
+    50%{
+        opacity: 0.8;
+    }
+    100%{
+        opacity: 0.2;
+    }
+}
 /* responsiveness */
 
 @media screen and (max-width: 1100px){

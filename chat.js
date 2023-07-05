@@ -524,6 +524,24 @@ msgtext.addEventListener('keypress', (event) => {
     }
 })
 
+const voicebtn = document.getElementById('VoiceCall')
+const videobtn = document.getElementById('VideoCall')
+let senderaudio = new Audio('sender.mp3')
+let callshow = document.getElementById('callshow')
+let crossmark = `<i class="fa-solid fa-xmark-large"></i>`
+
+voicebtn.addEventListener('click' , () => {
+    socket.emit('voice-call-req', "Voice Call")
+    callshow.style.display = 'flex'
+    senderaudio.loop = true
+    senderaudio.play()
+    setTimeout(() => {senderaudio.pause()}, 5400)
+})
+
+socket.on('voice-req-received', uname => {
+    console.log(uname)
+})
+
 const mediaQuery = window.matchMedia('(max-width: 650px)')
 
 let infodiv = document.getElementById('info-div')

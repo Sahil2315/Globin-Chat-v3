@@ -8,6 +8,7 @@
     <title>Globin Chat</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://globin-chat.onrender.com/socket.io/socket.io.js"></script>
+    <script src="https://kit.fontawesome.com/510c7dd143.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="graddiv">
@@ -66,8 +67,18 @@
             </button>
         </div>
         <div id="chatinfo">
-            
             <div id="info2">
+            </div>
+            <div id="calls">
+                <div id="VoiceCall">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <div id="VideoCall">
+                    <i class="fa-solid fa-video"></i>
+                </div>
+            </div>
+            <div id="callshow">
+                <i class="fa-solid fa-phone"></i>
             </div>
         </div>
     </div>
@@ -102,4 +113,5 @@
     </div>
 </body>
 <script src="chat.js"></script>
+<script src="voiceAndVideo.js"></script>
 </html>
